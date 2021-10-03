@@ -1,0 +1,17 @@
+.section {
+
+    & > * ~ * {
+        margin-top: 50px;
+    }
+
+    &__title {
+        font-size: 2rem;
+        text-transform: capitalize;
+        text-align: center;
+        margin: 10px 10px 50px 10px;
+    }
+
+    &__body {
+        margin-top: 0px;
+    }
+}
