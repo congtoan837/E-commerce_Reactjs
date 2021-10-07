@@ -37,5 +37,10 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
+    "font-awesome": "^4.7.0",
+    "react-redux": "^7.2.5",
+    "react-toastify": "^8.0.3"
+  }
 }

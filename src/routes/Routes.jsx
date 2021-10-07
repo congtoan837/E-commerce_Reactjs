@@ -6,13 +6,17 @@ import Login from '../views/auth/login'
 
 import Index from '../views/index/home'
 import Catalog from '../views/index/catalog'
+import Product from "../views/index/Product";
 
 const Routes = () => {
     return (
         <Switch>
-            <Route path='/' exact component={Index}/>
-            <Route path='/login' exact component={Login}/>
+            <Route exact path='/' component={Index}/>
             <Route path='/catalog' exact component={Catalog}/>
+            <Route path='/catalog/:slug' component={Product}/>
+
+            <Route path='/auth' exact component={Index}/>
+            <Route path='/auth/login' exact component={Login}/>
         </Switch>
     )
 }

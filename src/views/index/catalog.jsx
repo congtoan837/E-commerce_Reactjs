@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useRef} from "react";
 
 import Helmet from "../../components/Helmet";
 import Section, {SectionBody} from "../../components/Section";
 import Grid from "../../components/Grid";
 import productData from "../../assets/fake-data/products";
 import ProductCard from "../../components/ProductCard";
-import {Breadcrumb, Pagination} from "react-bootstrap";
+import {Breadcrumb, Button, Pagination} from "react-bootstrap";
 
-export default function Catalog() {
+const Catalog = () => {
+
+    const filterRef = useRef(null)
+
+    const showHideFilter = () => filterRef.current.classList.toggle('active')
+
     return (
         <Helmet title="Sản phẩm">
             <div className="content">
@@ -20,7 +25,10 @@ export default function Catalog() {
                 <div className="container-title">
                     <h1>Sản phẩm</h1>
                 </div>
-                <div className="product-sidebar">
+                <div className="product-sidebar" ref={filterRef}>
+                    <div className="product-sidebar-close" onClick={() => showHideFilter()}>
+                        <i className="bx bx-left-arrow-alt"></i>
+                    </div>
                     <div className="category">
                         <a className="category-item" href="#">
                             <div>test</div>
@@ -49,16 +57,14 @@ export default function Catalog() {
                                 <h5>Giá tiền</h5>
                             </div>
                             <div className="filter-group-body">
-                                <div className="filter-group-body-content">
-                                    <div className="form-group">
-                                        <div className="form-check">
-                                            <input type="checkbox" className="form-check-input"></input>
-                                            <label className="form-check-label">Từ 50k - 99k</label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input type="checkbox" className="form-check-input"></input>
-                                            <label className="form-check-label">Từ 100k - 299k</label>
-                                        </div>
+                                <div className="form-group">
+                                    <div className="form-check">
+                                        <input type="checkbox" className="form-check-input"></input>
+                                        <label className="form-check-label">Từ 50k - 99k</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input type="checkbox" className="form-check-input"></input>
+                                        <label className="form-check-label">Từ 100k - 299k</label>
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +76,9 @@ export default function Catalog() {
                 <div className="product-container">
                     <Section>
                         <div className="product-container-sort">
+                            <div className="product-filter-toggle">
+                                <Button onClick={() => showHideFilter()}>bộ lọc</Button>
+                            </div>
                             <div className="product-container-sort-right">
                                 <div className="product-container-sort-title">Sắp xếp</div>
                                 <div className="product-container-sort-section">
@@ -105,7 +114,7 @@ export default function Catalog() {
                     </Section>
                     <div className="product-container-sort">
                         <div className="product-container-sort-left">
-                            <div className="product-container-sort-title">Hiển thị</div>
+                            <div className="product-container-sort-title">Show</div>
                             <div className="product-container-sort-section">
                                 <select className="form-select">
                                     <option selected>8</option>
@@ -134,3 +143,5 @@ export default function Catalog() {
         </Helmet>
     )
 }
+
+export default Catalog

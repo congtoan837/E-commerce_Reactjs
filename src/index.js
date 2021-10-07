@@ -5,11 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import './assets/boxicons-2.0.7/css/boxicons.min.css'
 import './assets/sass/index.scss'
 
-import Layout from './components/Layout'
+import App from './app';
+
+import { store } from './redux/store'
+import {Provider} from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout />
+      <Provider store={store}>
+        <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

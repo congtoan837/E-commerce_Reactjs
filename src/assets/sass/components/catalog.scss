@@ -3,12 +3,24 @@
   width: 78%;
   background: #f4f5fa;
   float: right;
+
+  @include tablet {
+    width: 100%
+  }
 }
 
 .product-container-sort {
   padding: 15px 10px 5px 10px;
   display: inline-flex;
   width: 100%;
+
+  .product-filter-toggle {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
 }
 
 .product-container-sort-left {
@@ -39,6 +51,34 @@
 .product-sidebar {
   width: 20%;
   float: left;
+
+  @include tablet {
+    width: 50%;
+    height: 100vh;
+    background-color: $main-bg;
+    padding: 1rem;
+    position: fixed;
+    left: 0;
+    top: $header-tablet-height;
+    z-index: 98;
+    box-shadow: $box-shadow;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  &.active {
+    transform: translateX(0);
+    top: 40px;
+  }
+
+  &-close {
+    display: none;
+    @include tablet {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .clear {
@@ -121,8 +161,10 @@
 }
 
 .filter-group-body {
-  padding-right: Calc(6.78571%);
-  padding-left: Calc(6.78571%);
+
+  .form-check {
+    display: block;
+  }
 }
 
 .form-check {
@@ -150,17 +192,17 @@
   letter-spacing: 0;
 }
 
-input[type=checkbox] { display:none; } /* to hide the checkbox itself */
-input[type=checkbox] + label:before {
+.form-check input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+.form-check input[type=checkbox] + label:before {
   font-family: FontAwesome;
   display: inline-block;
 }
 
-input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
-input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+.form-check input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
+.form-check input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
 
-input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
-input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
+.form-check input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
+.form-check input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
 
 .container-title {
   min-height: 70px;

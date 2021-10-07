@@ -20,7 +20,7 @@ export default function Home() {
             <HeroSlider
                 data={heroSliderData}
                 control={true}
-                auto={true}
+                auto={false}
                 timeOut={5000}
             />
             {/* slider */}
