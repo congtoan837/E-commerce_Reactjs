@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './assets/boxicons-2.0.7/css/boxicons.min.css'
 import './assets/sass/index.scss'
 
-import App from './app';
+import Routes from 'routes/Routes';
 
 import { store } from './redux/store'
 import {Provider} from "react-redux";
@@ -13,7 +13,7 @@ import {Provider} from "react-redux";
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <Routes />
       </Provider>
   </React.StrictMode>,
   document.getElementById('root')

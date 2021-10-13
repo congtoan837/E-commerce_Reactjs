@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import ButtonLoader from "../../components/ButtonLoader";
-import axios from "axios";
+
+import auth from 'api/auth'
 import {toast} from "react-toastify";
 
 export default function Index() {
@@ -9,36 +10,35 @@ export default function Index() {
 
     const [loader, setLoader] = useState(false);
 
-    const SERVER_URL = `http://127.0.0.1:8081`;
+    // function validateForm() {
+    //     return email.length === 0 && password.length === 0;
+    // }
 
-    function login(username, password) {
-        axios
-            .post(`${SERVER_URL}/signin`, {
-                username: username,
-                password: password
-            })
-            .then(res => {
-                localStorage.setItem('access_token', res.data.data.token);
-                setLoader(false);
+    function signIn() {
+        auth.login(email, password)
+            .then(function (response)  {
+                // store token to localStorage
+                localStorage.setItem('access_token', response.data.data.token);
+                // redirect to index
                 window.location = "/"
             })
-            .catch(error => {
+            .catch(function (error) {
                 if (error.response) {
                     /** @param data.messenger **/
+                    // notification error
                     toast.error(error.response.data.messenger);
-                }
-                setLoader(false);
-            })
-    }
+                } else {
 
-    function validateForm() {
-        return email.length === 0 && password.length === 0;
+                }
+                // set display button
+                setLoader(false)
+            });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         setLoader(true);
-        login(email, password);
+        signIn()
     }
 
     return (
@@ -58,7 +58,8 @@ export default function Index() {
 
                         <div className="form-group">
                             <div className="input-group">
-                                <input type="password" className="form-control" placeholder="Enter password" value={password}
+                                <input type="password" className="form-control" placeholder="Enter password"
+                                       value={password}
                                        onChange={(e) => setPassword(e.target.value)}/>
                             </div>
                         </div>
@@ -75,7 +76,7 @@ export default function Index() {
                             </p>
                         </div>
 
-                        <ButtonLoader isLoading={loader} />
+                        <ButtonLoader isLoading={loader}/>
                     </form>
                 </div>
             </div>

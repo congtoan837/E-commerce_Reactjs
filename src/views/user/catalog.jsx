@@ -30,19 +30,19 @@ const Catalog = () => {
                         <i className="bx bx-left-arrow-alt"></i>
                     </div>
                     <div className="category">
-                        <a className="category-item" href="#">
+                        <a className="category-item" href="/catalog">
                             <div>test</div>
                             <div>69</div>
                         </a>
-                        <a className="category-item" href="#">
+                        <a className="category-item" href="/catalog">
                             <div>test</div>
                             <div>69</div>
                         </a>
-                        <a className="category-item" href="#">
+                        <a className="category-item" href="/catalog">
                             <div>test</div>
                             <div>69</div>
                         </a>
-                        <a className="category-item" href="#">
+                        <a className="category-item" href="/catalog">
                             <div>test</div>
                             <div>69</div>
                         </a>
